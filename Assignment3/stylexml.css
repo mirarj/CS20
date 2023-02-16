@@ -1,0 +1,11 @@
+@charset "UTF-8";
+song {display: block; border-bottom: 1px solid rgb(12, 95, 97); font-family: Arial, Helvetica, sans-serif; padding-left: 1em}
+title {display: block;  font-weight: bold; font-size: 1.2em; margin-bottom: auto; font-weight:900; text-decoration: underline}
+
+artists, artist, genres, genre, year {display: block; margin-left: 1em}
+
+artists:before {content: "Artists: "; text-transform:uppercase; font-weight: bold}
+genres:before {content: "Genres: "; text-transform:uppercase; font-weight: bold}
+year::before {content: "YEAR: "; font-weight: bold}
+
+artist:before, genre:before {content: '- '}

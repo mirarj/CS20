@@ -1,0 +1,165 @@
+<!-- CS20 Assignment 1 HTML file-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name='viewport' content='width=device-width, initial-scale=1'/>
+
+	<title>CS20 Assignment 4</title>
+	<link rel='stylesheet' href='./style.css' />
+
+	<!-- add semicolons bro -->
+	<!-- display discount only if exists -->
+</head>
+
+<body>
+	<script>
+	
+		function dollarsDisplay(dollars)
+		{
+			dollars = dollars + "";
+			d = dollars.split('.');
+			if (d.length == 1)
+			{
+				d_dec = "00";
+			}
+			else if (d.length == 2)
+			{
+				d_dec = d[1]
+				if (d_dec.length > 2)
+				{
+					extra = d_dec.substr(2, d_dec.length-2);
+					cutoff = 10 ** (d_dec.length-2)/2;
+					if (extra<cutoff)
+					{
+						d_dec = d[1].substr(0,2);
+					}
+					else
+					{
+						dollars = ((parseFloat(dollars) + 0.01) + "")
+						d = dollars.split('.');
+						d_dec = d[1].substr(0,2)
+					}
+				}
+				if (d_dec.length == 0)
+				{
+					d_dec = "00";
+				}
+				if (d_dec.length == 1)
+				{
+					d_dec = d_dec + "0";
+				}
+
+			}
+			else
+			{
+				throw new Error("dollarsDisplay only takes in numbers");
+			}
+			
+			return "$" + d[0] + "." + d_dec;
+		}
+
+		hotdogs = parseInt(prompt("How many hotdogs do you want?"));
+		while (isNaN(hotdogs))
+		{
+			hotdogs = parseInt(prompt("Please enter a number.\nHow many hotdogs do you want?", "0"));
+		}
+		fries = parseInt(prompt("How many fries do you want?"));
+		while (isNaN(fries))
+		{
+			fries = parseInt(prompt("Please enter a number.\nHow many fries do you want?", "0"));
+		}
+		sodas = parseInt(prompt("How many sodas do you want?"));
+		while (isNaN(sodas))
+		{
+			sodas = parseInt(prompt("Please enter a number.\nHow many sodas do you want?", "0"));
+		}
+
+
+		hotdogs_cost = 4 * hotdogs;
+		fries_cost = 3.5 * fries;
+		sodas_cost = 1.75 * sodas;
+
+		subtotal = hotdogs_cost + fries_cost + sodas_cost;
+
+		if (subtotal>20)
+		{
+			discounted = 0.1 * subtotal;
+			subtotal = subtotal - discounted;
+		}
+		else
+		{
+			discounted = 0;
+		}
+
+		tax = 0.0625 * subtotal;
+		total = subtotal + tax;
+		
+	</script>
+
+	<h1>
+		Order Details
+	</h1>
+
+	<p id="hotdogs"></p>
+	<p id="fries"></p>
+	<p id="sodas"></p>
+	<hr />
+	<p id="discount"></p>
+	<hr />
+	<p id="subtotal">
+		<span class='item'>Subtotal</span>
+		<span class='dots'></span>
+		<span class='price' id="subtotal_price"></span>
+	</p>
+	<p id="tax">
+		<span class='item'>Tax</span>
+		<span class='dots'></span>
+		<span class='price' id="tax_price"></span>
+	</p>
+	<hr />
+	<p id="total">
+		<span class='item'>Total</span>
+		<span class='dots'></span>
+		<span class='price' id="total_price"></span>
+	</p>
+	
+	<script>
+		if (hotdogs > 0)
+		{
+			document.getElementById("hotdogs").innerHTML = 	"<span class='item'>Hotdogs (" + hotdogs + ") </span>\n" + 
+															"<span class='dots'></span>\n" +
+															"<span class='price'>" + dollarsDisplay(hotdogs_cost) + "</span>"
+		}
+
+		if (fries > 0)
+		{
+			document.getElementById("fries").innerHTML = 	"<span class='item'>Fries (" + fries + ") </span>" + 
+															"<span class='dots'></span>" +
+															"<span class='price'>" + dollarsDisplay(fries_cost) + "</span>"
+		}
+
+		if (sodas > 0)
+		{
+			document.getElementById("sodas").innerHTML = 	"<span class='item'>Sodas (" + sodas + ") </span>" + 
+															"<span class='dots'></span>" +
+															"<span class='price'>" + dollarsDisplay(sodas_cost) + "</span>"
+		}
+		if (discounted > 0)
+		{
+			document.getElementById("discount").innerHTML = "<span class='item'>Discount </span>" + 
+															"<span class='dots'></span>" +
+															"<span class='price'>- " + dollarsDisplay(discounted) + "</span>"
+		}
+		document.getElementById("subtotal_price").innerHTML = dollarsDisplay(subtotal)
+		document.getElementById("tax_price").innerHTML = dollarsDisplay(tax)
+		document.getElementById("total_price").innerHTML = dollarsDisplay(total)
+
+	</script>
+
+
+</body>
+
+</html>

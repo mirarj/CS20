@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href = "stylexml.css" ?>
+<songs>
+    <song>
+        <title>Umbrella</title>
+        <artists>
+            <artist>Rihanna</artist>
+            <artist>Jay-Z</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+            <genre>Hip-Hop</genre>
+        </genres>
+        <year>2007</year>
+    </song>
+    <song>
+        <title>Attention</title>
+        <artists>
+            <artist>Charlie Puth</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+        </genres>
+        <year>2017</year>
+    </song>
+    <song>
+        <title>One Call Away</title>
+        <artists>
+            <artist>Charlie Puth</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+        </genres>
+        <year>2015</year>
+    </song>
+    <song>
+        <title>Uptown Funk</title>
+        <artists>
+            <artist>Bruno Mars</artist>
+            <artist>Mark Ronson</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+        </genres>
+        <year>2014</year>
+    </song>
+    <song>
+        <title>Symphony</title>
+        <artists>
+            <artist>Clean Bandit</artist>
+            <artist>Zara Larsson</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+        </genres>
+        <year>2017</year>
+    </song>
+    <song>
+        <title>Hey, Soul Sister</title>
+        <artists>
+            <artist>Train</artist>
+        </artists>
+        <genres>
+            <genre>Pop</genre>
+        </genres>
+        <year>2009</year>
+    </song>
+    <song>
+        <title>Bohemian Rhapsody</title>
+        <artists>
+            <artist>Queen</artist>
+        </artists>
+        <genres>
+            <genre>Rock</genre>
+        </genres>
+        <year>1975</year>
+    </song>
+    <song>
+        <title>Hips Don't Lie</title>
+        <artists>
+            <artist>Shakira</artist>
+            <artist>Wyclef Jean</artist>
+        </artists>
+        <genres>
+            <genre>Latin</genre>
+            <genre>Pop</genre>
+        </genres>
+        <year>2006</year>
+    </song>
+    <song>
+        <title>Defying Gravity</title>
+        <artists>
+            <artist>Kristin Chenoweth</artist>
+            <artist>Idina Menzel</artist>
+        </artists>
+        <genres>
+            <genre>Broadway</genre>
+        </genres>
+        <year>2003</year>
+    </song>
+    <song>
+        <title>Chammak Challo</title>
+        <artists>
+            <artist>Akon</artist>
+            <artist>Hamsika Ayer</artist>
+        </artists>
+        <genres>
+            <genre>Bollywood</genre>
+        </genres>
+        <year>2011</year>
+    </song>
+    <song>
+        <title>HIP</title>
+        <artists>
+            <artist>MAMAMOO</artist>
+        </artists>
+        <genres>
+            <genre>K-pop</genre>
+        </genres>
+        <year>2019</year>
+    </song>
+
+
+</songs>

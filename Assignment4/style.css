@@ -1,0 +1,11 @@
+/* div class=line */
+/* div class = item or class=price */
+/* #element1 {display:inline-block;margin-right:10px;} 
+#element2 {display:inline-block;} 
+ */
+
+ p {display: block;}
+ .item {display: inline-block; text-align: left;}
+ .dots {display: inline-block; margin-left: 1em; margin-right:1em; width: 200px; border-bottom: 2px dotted rgb(0, 0, 0); align-items: center;}
+ .price {display: inline-block; text-align: right;}
+
