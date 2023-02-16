@@ -1,4 +1,4 @@
-<!-- CS20 Assignment 1 HTML file-->
+<!-- CS20 Assignment 4 HTML file-->
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +9,6 @@
 
 	<title>CS20 Assignment 4</title>
 	<link rel='stylesheet' href='./style.css' />
-
-	<!-- add semicolons bro -->
-	<!-- display discount only if exists -->
 </head>
 
 <body>
@@ -21,17 +18,17 @@
 		{
 			dollars = dollars + "";
 			d = dollars.split('.');
-			if (d.length == 1)
+			if (d.length == 1) // already whole number
 			{
 				d_dec = "00";
 			}
 			else if (d.length == 2)
 			{
 				d_dec = d[1]
-				if (d_dec.length > 2)
+				if (d_dec.length > 2) 
 				{
-					extra = d_dec.substr(2, d_dec.length-2);
-					cutoff = 10 ** (d_dec.length-2)/2;
+					extra = d_dec.substr(2, d_dec.length-2); // everything after 2nd decimal place
+					cutoff = 10 ** (d_dec.length-2)/2; // 50 if 2 extra decimal places, 500 if 3, 5000 if 4, etc
 					if (extra<cutoff)
 					{
 						d_dec = d[1].substr(0,2);
@@ -125,37 +122,37 @@
 		<span class='dots'></span>
 		<span class='price' id="total_price"></span>
 	</p>
-	
+
 	<script>
 		if (hotdogs > 0)
 		{
 			document.getElementById("hotdogs").innerHTML = 	"<span class='item'>Hotdogs (" + hotdogs + ") </span>\n" + 
 															"<span class='dots'></span>\n" +
-															"<span class='price'>" + dollarsDisplay(hotdogs_cost) + "</span>"
+															"<span class='price'>" + dollarsDisplay(hotdogs_cost) + "</span>";
 		}
 
 		if (fries > 0)
 		{
 			document.getElementById("fries").innerHTML = 	"<span class='item'>Fries (" + fries + ") </span>" + 
 															"<span class='dots'></span>" +
-															"<span class='price'>" + dollarsDisplay(fries_cost) + "</span>"
+															"<span class='price'>" + dollarsDisplay(fries_cost) + "</span>";
 		}
 
 		if (sodas > 0)
 		{
 			document.getElementById("sodas").innerHTML = 	"<span class='item'>Sodas (" + sodas + ") </span>" + 
 															"<span class='dots'></span>" +
-															"<span class='price'>" + dollarsDisplay(sodas_cost) + "</span>"
+															"<span class='price'>" + dollarsDisplay(sodas_cost) + "</span>";
 		}
 		if (discounted > 0)
 		{
 			document.getElementById("discount").innerHTML = "<span class='item'>Discount </span>" + 
 															"<span class='dots'></span>" +
-															"<span class='price'>- " + dollarsDisplay(discounted) + "</span>"
+															"<span class='price'>- " + dollarsDisplay(discounted) + "</span>";
 		}
-		document.getElementById("subtotal_price").innerHTML = dollarsDisplay(subtotal)
-		document.getElementById("tax_price").innerHTML = dollarsDisplay(tax)
-		document.getElementById("total_price").innerHTML = dollarsDisplay(total)
+		document.getElementById("subtotal_price").innerHTML = dollarsDisplay(subtotal);
+		document.getElementById("tax_price").innerHTML = dollarsDisplay(tax);
+		document.getElementById("total_price").innerHTML = dollarsDisplay(total);
 
 	</script>
 
