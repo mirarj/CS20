@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+function showButton(n)
+{
+    alert("You pressed " + n)
+}
+window.onload=function() {
+    for (let i=0;i<3; i++)
+    {
+       btnObj= document.getElementById("btn"+(i+1));
+       btnObj.onclick = function() {
+        alert("You pressed " + (i+1))
+       } //end event handler
+    }// end for
+}// end window.onload
+    
+</script>
+</head>
+
+<body>
+<input type='button' value="Button1"
+       id="btn1">
+<input type='button' value="Button2"
+       id="btn2">
+<input type='button' value="Button3"
+       id="btn3">
+   
+</body>
+</html>

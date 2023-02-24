@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name='viewport' content='width=device-width, initial-scale=1'/>
+
+        <style>
+            body {background-color: darkmagenta}
+            body * {font-size: xx-large; text-align: center; max-width: 100%; color: white; font-family: sans-serif;}
+            input {color: darkmagenta;}
+            table {margin: auto; text-align: center}
+            td {width: 3em; height: 3em; text-align: center; padding: 0; margin: 0; border: 3px solid darkmagenta;}
+            td > input {padding: 0; margin: 0; width: 100%; height: 100%; cursor: url("x.png") 17 19,auto}
+            #startover {width: 100%;}
+            p {font-weight: bold;}
+        </style>
+    </head>
+
+    <body>
+        <!-- INITIAL LOAD PAGE -->
+        <table>
+            <script>
+                for (let i = 0; i < 3; i++) {
+                    document.write("<tr>\n")
+                    for (let j = 0; j < 3; j++) {
+                        document.write(
+                            "\t<td>\n\t\t<input type='button' class='cell' id='"+i+j+"' value=' '>\n\t</td>\n")
+                    }
+                    document.write("</tr>\n")
+                }
+            </script>
+        </table>
+        <p id="turntxt">X's turn</p>
+        <p id="wintxt"></p>
+        <input type="button" value="Start Over" id="startover" style="display: none;">
+
+        <!-- EVENTS -->
+        <script>
+
+            currturn = "X";
+            canmove = true;
+
+            cells = document.querySelectorAll("td input[type='button']");
+            turntxt = document.getElementById("turntxt");
+            wintxt = document.getElementById("wintxt");
+            startover = document.getElementById("startover");
+
+
+            function makeMove(button)
+            {
+                
+                // enter value if cell is not empty and game is not over
+                if (button.value != " " || !canmove) {return}
+                button.value = currturn;
+
+                // check if game is over
+                if (checkWin(currturn))
+                {
+                    canmove = false;
+                    wintxt.innerHTML = currturn + " wins!";
+                    startover.style.display="";
+                    return; // so winner goes first next time
+                }
+
+                if (checkTie()) {
+                    canmove = false;
+                    wintxt.innerHTML = "You tied";
+                    startover.style.display="";
+                    return;
+                }
+
+                // switch turn
+                if (currturn == "X") {currturn="O";}
+                else if (currturn == "O") {currturn="X";}
+
+                // display whose turn it is
+                turntxt.innerHTML = currturn + "'s turn";
+
+                // change cursor
+                if (currturn=="O") {
+                    cells.forEach(element => {
+                        element.style.cursor = "url('o.png') 8 8,auto"
+                    });
+                }
+                else
+                {
+                    cells.forEach(element => {
+                        element.style.cursor = "url('x.png') 8 9,auto"
+                    });
+                }
+
+            }
+
+            function checkWin(turn)
+            {
+                winstates = ['012','345','678','036','147','258','048','246'];
+
+                // for each possible win state
+                for (let state = 0; state < winstates.length; state++)
+                {
+                    won = true;
+                    // check if player hasn't filled any of the cells for that win state
+                    for (let i = 0; i < winstates[state].length; i++)
+                    {
+                        if (cells[winstates[state][i]].value != turn)
+                        {
+                            won = false;
+                        }
+                    }
+                    if (won) {return true;}
+                }
+                return false;
+            }
+            
+            function checkTie()
+            {
+                // check if all cells are not empty
+                grid_full = true;
+                cells.forEach(element => {
+                    grid_full = grid_full && element.value!=" "
+                });
+                return grid_full;
+            }
+
+            cells.forEach(element => {
+                element.addEventListener('click', function(){makeMove(element)});                
+            });
+
+
+            // reset 
+            function clearAll()
+            {
+                cells.forEach(element => {element.value=" "});
+                wintxt.innerHTML = "";
+                startover.style.display="none"
+                canmove = true;
+            }
+            startover.addEventListener('click', function(){clearAll()});
+
+        </script>
+    
+    </body>
+</html>

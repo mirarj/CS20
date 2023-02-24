@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS plus HTML</title>
+<style type="text/css">
+    ul.list {list-style-type:none}
+    ul.list li {display:inline-block; width: 100px; text-align: center}  
+    
+</style>
+</head>
+
+<body>
+    <script>
+    items = ["one", "two", "three"];
+    items = "one two three".split(' ');
+    document.write(items)
+    s = "<ul class='list'>"
+    items.forEach(function(item) {
+        s += "<li>" + item + "</li>";  
+    })
+    s +=  "</ul>";
+    document.write (s)
+    theListItems = document.querySelectorAll("ul.list li");
+    LIcontent = [];
+    theListItems.forEach(function(li){
+        LIcontent.push(li.innerHTML);
+    })
+    document.write(LIcontent);
+    </script>
+    <!--ul>
+    <li>one</li>
+     <li>two</li>
+     <li>three</li>
+    </ul-->
+</body>
+</html>
