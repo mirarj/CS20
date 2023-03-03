@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jade Delight</title>
+</head>
+
+<body>
+
+<script>
+
+function MenuItem(name, cost)
+{
+	this.name = name;
+	this.cost=cost;
+}
+
+menuItems = new Array(
+	new MenuItem("Chicken Chop Suey", 5.5),
+	new MenuItem("Sweet and Sour Pork", 7.25),
+	new MenuItem("Shrimp Lo Mein", 6.80),
+	new MenuItem("Moo Shi Chicken", 9.50),
+	new MenuItem("Fried Rice", 3.25)
+);
+
+function makeSelect(name, minRange, maxRange)
+{
+	var t= "";
+	t = "<select name='" + name + "' size='1'>";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option>" + j + "</option>";
+	t+= "</select>"; 
+	return t;
+}
+
+function td(content, className="")
+{
+	return "<td class = '" + className + "'>" + content + "</td>";
+}
+	
+</script>
+
+<h1>Jade Delight</h1>
+<form>
+
+<p class="userInfo"><label>First Name:</label> <input type="text"  name='fname' /></p>
+<p class="userInfo"><label>Last Name*:</label>  <input type="text"  name='lname' /></p>
+<p class="userInfo address"><label>Street*:</label> <input type="text" name='street' /></p>
+<p class="userInfo address"><label>City*:</label> <input type="text" name='city' /></p>
+<p class="userInfo"><label>Phone*:</label> <input type="text"  name='phone' /></p>
+<p> 
+	<input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup  
+	<input type="radio"  name='p_or_d' value = 'delivery'/>
+	Delivery
+</p>
+<table border="0" cellpadding="3">
+  <tr>
+    <th>Select Item</th>
+    <th>Item Name</th>
+    <th>Cost Each</th>
+    <th>Total Cost</th>
+  </tr>
+<script>
+
+  var s = "";
+  for (i=0; i< menuItems.length; i++)
+  {
+	  s += "<tr>";
+	  s += td(makeSelect("quan" + i, 0, 10),"selectQuantity");
+	  s += td(menuItems[i].name, "itemName");
+	  s += td("$" +menuItems[i].cost.toFixed(2), "cost");
+	  s += td("$<input type='text' name='cost'/>", "totalCost");
+	  s+= "</tr>";
+  }
+  document.writeln(s);
+</script>
+</table>
+<p class="subtotal totalSection"><label>Subtotal</label>: 
+   $ <input type="text"  name='subtotal' id="subtotal" />
+</p>
+<p class="tax totalSection"><label>Mass tax 6.25%:</label>
+  $ <input type="text"  name='tax' id="tax" />
+</p>
+<p class="total totalSection"><label>Total:</label> $ <input type="text"  name='total' id="total" />
+</p>
+
+<input type = "button" value = "Submit Order" />
+
+</form>
+
+<script>
+
+	// UPDATING PRICES
+
+	// get elements
+	item_quants = document.querySelectorAll("td.selectQuantity select");
+	item_subtotals = document.querySelectorAll("td.totalCost input");
+
+	subtotal = document.querySelector("#subtotal")
+	tax = document.querySelector("#tax")
+	total = document.querySelector("#total")
+
+	// initialize subtotals
+	item_subtotals.forEach(e => {
+		e.value = (0).toFixed(2);
+		e.readOnly = true;
+	});
+
+	// update subtotals
+	item_quants.forEach((e,i) => {
+		e.addEventListener("change", function(){
+			item_subtotals[i].value = (e.value * menuItems[i].cost).toFixed(2);
+			updateTotals();
+		});
+	});
+
+	// update final totals
+	function updateTotals() {
+		sum = 0.0;
+		item_subtotals.forEach((e) => {
+			sum = sum + parseFloat(e.value);
+		})
+		subtotal.value = sum.toFixed(2);
+		subtotal.readOnly = true;
+		tax.value = (subtotal.value * 0.0625).toFixed(2);
+		tax.readOnly = true;
+		total.value = (parseFloat(subtotal.value) + parseFloat(tax.value)).toFixed(2);
+		total.readOnly = true;
+	}
+
+
+	// SHOW/HIDE ADDRESS FIELDS
+
+	// get elements
+	pd = document.getElementsByName("p_or_d");
+	address = document.querySelectorAll(".userInfo.address")
+
+	// check which option is currently selected
+	function showHideAddress() {
+		if (pd[0].checked) {
+				address.forEach(e => {
+					e.style.display = "None";
+				});	
+			}
+			else if (pd[1].checked) {
+				address.forEach(e => {
+					e.style.display = "";
+				});
+			}
+	}
+	
+	// check when page is loaded, then on any change events
+	showHideAddress()
+	pd.forEach(e => {
+		e.addEventListener('change', function() {showHideAddress()})
+	});
+
+
+	// ALIGN LABELS
+
+	// get elements, set style property
+	labels = document.querySelectorAll("label");
+	labels.forEach(e => {
+		e.style.width = '10em';
+		e.style.display = 'inline-block'
+	});
+
+
+	// VALIDATE/SUBMIT
+
+	// get elements
+	submit = document.querySelector("input[value='Submit Order']")
+	userinfo = document.querySelectorAll(".userInfo input")
+
+	submit.addEventListener('click', function() { validate(); })
+
+	function validate() {
+
+		// validate name is entered
+		if (userinfo[0].value=='' || userinfo[1].value=='') {
+				alert("Enter your full name");
+				return;
+		}
+		// validate address is entered
+		if (pd[1].checked) {
+			if (userinfo[2].value=='' || userinfo[3].value=='') {
+				alert("Enter an address for delivery");
+				return;
+			}
+		}
+		// validate phone number
+		phone = userinfo[4].value;
+		// regex for 7 or 10 digits, any number of non digit characters in between
+		if (!(/^\D*(\d\D*){7}$/.test(phone) || /^\D*(\d\D*){10}$/.test(phone))) {
+			alert("Invalid phone number");
+			return;
+		}
+		// validate some item ordered
+		if (total.value==0) {
+			alert("Order at least one item");
+			return;
+		}
+
+		// calculate pickup/delivery time
+		dnow = new Date()
+		if (pd[0].checked) {
+			eta = new Date(dnow.getTime()+(15*60*1000))
+			timedisplay = "Pickup: " + eta.toLocaleTimeString();
+		}
+		else if (pd[1].checked) {
+			eta = new Date(dnow.getTime()+(45*60*1000))
+			timedisplay = "Delivery: " + eta.toLocaleTimeString();
+		}
+
+		// html for (items/quantity/cost for each/subtotals/tax/total) and the pickup or delivery time.
+		orderdetails = "<h1>Order Details</h1> <h2>" + timedisplay + "</h2>";
+
+		item_subtotals.forEach((e,i) => {
+			orderdetails += "<p><span class='item'>" + menuItems[i].name + "</span><span class='dots'></span><span class='price'>$" + e.value + "</span></p>"
+		})
+
+		orderdetails += "<br />" +
+		"<p> <span class='item'>Subtotal</span><span class='dots'></span><span class='price'>$" + subtotal.value + "</span></p>" +
+		"<p> <span class='item'>Tax</span><span class='dots'></span><span class='price'>$" + tax.value + "</span></p>" +
+		"<p> <span class='item'>Total</span><span class='dots'></span><span class='price'>$" + total.value + "</span></p>";
+
+		// write html to new window
+		w = window.open(target='_blank');
+		// stylesheet from joes hotdogs ouo
+		w.document.write("<link rel='stylesheet' href='../Assignment4_JS/style.css' />")
+		w.document.write(orderdetails);
+		w.alert("Thank you for your order! See receipt below")
+	}
+
+</script>
+
+</body>
+</html>

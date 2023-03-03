@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<style type="text/css">
+	.plain {font-size: 20px;  color:#000; } 
+	.highlight {background-color:#F1F56E; border:1px dashed #000}
+	.error {color: #E2223E;  font-weight: 700}
+</style>
+<title>Untitled Document</title>
+<script language="javascript">
+$(document).ready (function()
+  {   
+	$("#p3").click(press3);
+  })
+function press1()
+	{
+		//alert("hi")
+		$(".error").html("Error condition")
+	}
+function press2()
+{
+  if($("p.special").hasClass("plain"))
+   $(".plain").addClass("highlight").removeClass("plain");
+  else
+   $(".highlight").addClass("plain").removeClass("highlight");
+}
+function press3()
+{
+	$("h2").fadeOut(2000,comeBack);
+	//alert("hello");
+}
+function comeBack()
+{
+	$("h2").fadeIn(2000);
+}
+</script>
+</head>
+
+<body>
+	<h2> Here is some h2 text</h2>
+	<p class="plain special">Here is a paragraph</p>
+	<p class="error">&nbsp;</p>
+	
+	<input type="button" value="Press1" id="p1" onClick="press1()">
+	<input type="button" value="Press2" id="p2" onClick="press2()">
+	<input type="button" value="Press3" id="p3" >
+
+	
+</body>
+</html>
