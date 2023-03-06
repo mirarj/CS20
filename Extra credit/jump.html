@@ -14,10 +14,27 @@
             <input type='text' name='right' id='righttxt'> 
         </form>
         <script>
-            lefttext = document.getElementById("lefttxt").value;
-            righttext = document.getElementById("righttxt").value;
+            lefttext = document.getElementById("lefttxt");
+            righttext = document.getElementById("righttxt");
             button = document.getElementById("jumpbutton");
-            button.onclick = "not";
+            curr_right = true;
+
+            button.addEventListener('click', function () {
+                if (curr_right) {
+                    button.value = "< JUMP";
+                    righttext.value = lefttext.value;
+                    lefttext.value = "";
+                    curr_right = !curr_right
+                }
+                else {
+                    button.value = "JUMP >";
+                    lefttext.value = righttext.value;
+                    righttext.value = "";
+                    curr_right = !curr_right
+                }
+
+                
+            });
 
         </script>
     

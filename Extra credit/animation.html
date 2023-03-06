@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jump</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+        </style>
+        <script
+            src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+            integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+            crossorigin="anonymous">
+        </script>
+    </head>
+
+    <body>
+        <img src="images/photo1.jpg" id="image">
+        <br />
+        <input type="button" value="START" id="startbtn">
+        <input type="button" value="STOP" id="stopbtn">
+
+        <script>
+            images = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg", "photo5.jpg"]
+
+            $( document ).ready(function() {
+                curr_i = 0
+                $("startbtn").click(showImg(curr_i))
+                // $("stopbtn").click(next(curr_i-1))
+                // 	$("#startSlides").click(slideShow);
+                // 	$("#stopSlides").click(function()
+                // 		{
+                // 			$("#slide img").stop().fadeIn();
+                // 		}
+                // 	);
+                // })
+                // function slideShow()
+                // {
+                // 	$("#slide img").fadeOut(2000,nextSlide);
+                // }
+                // function nextSlide()
+                // {
+                // 	petIndex++;
+                // 	petIndex= petIndex== pets.length?0: petIndex;
+                // 	$("#slide img").attr("src", "images/"+pets[petIndex]);
+                // 	$("#slide img").fadeIn(2000,slideShow);
+                // }
+
+                function showImg(i){
+
+                    img_src = "photo" + (i+1) + ".jpg" 
+                    $("#image").attr("src", img_src)
+                    $("#image").fadeIn(function(){
+
+                    })
+                }
+
+
+            });
+        </script>
+    
+    </body>
+</html>
+  

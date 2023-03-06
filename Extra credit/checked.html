@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Check all</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <form method="get" action="" name="form1" id="form1">
+            <input type='checkbox' name="checkall" id='checkall'>
+            <label for="checkall">Check All</label>
+            <br /><br />
+            <input type='checkbox' name="item" id='1'>
+            <label for="1">first</label> <br />
+            <input type='checkbox' name="item" id='2'> 
+            <label for="2">second</label> <br />
+            <input type='checkbox' name="item" id='3'> 
+            <label for="3">third</label> <br />
+            <input type='checkbox' name="item" id='4'> 
+            <label for="4">fourth</label> <br />
+        </form>
+        <script>
+            all = document.getElementById("checkall");
+            items = document.getElementsByName("item");
+
+            all.addEventListener('click', function() {
+                // check all items
+                if (all.checked) {
+                    items.forEach(element => {
+                        element.checked = true;
+                        all.labels[0].innerText = "Uncheck All";
+                    });
+                }
+                // uncheck all items
+                else {
+                    items.forEach(element => {
+                        element.checked = false;
+                        all.labels[0].innerText = "Check All";
+                    });
+                }
+            });
+
+            items.forEach(element => {
+                element.addEventListener('click', function () {
+                    // uncheck "checkall" if not all items are checked (only have to consider current item)
+                    if (!element.checked){
+                        if (all.checked){
+                            all.checked = false;
+                            all.labels[0].innerText = "Check All";
+                        }
+                    }
+                    // check "checkall" if all items are checked (have to consider all items)
+                    else {
+                        allchecked = true;
+                        items.forEach(element => {
+                            allchecked = allchecked && element.checked;
+                        });
+                        if (allchecked)
+                        {
+                            all.checked = true;
+                            all.labels[0].innerText = "Uncheck All";
+                        }
+                    }
+                })
+            });
+
+                
+
+        </script>
+    
+    </body>
+</html>

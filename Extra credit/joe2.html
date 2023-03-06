@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Joe's Hotdogs</title>
+</head>
+
+<body>
+
+<script>
+	function MenuItem(name, cost){
+		this.name = name;
+		this.cost=cost;
+	}
+
+	menuItems = [new MenuItem("Hotdogs", 4),
+		new MenuItem("Fries", 3.5),
+		new MenuItem("Sodas", 1.75)
+	];
+
+	function makeRow(menuitem)
+	{
+		dropdown = "";
+
+		dropdown = "<select name='" + menuitem.name + "' size='1'>";
+		quants = [0,1,2,3,4,5,10,15,20]
+		quants.forEach(element => {
+			dropdown += "<option>" + element + "</option>";
+		});
+		dropdown += "</select>";
+
+		name = menuitem.name;
+
+		price = "$" + (menuitem.cost).toFixed(2);
+
+		dropdown = "<td>" + dropdown + "</td>";
+		name = "<td>" + name + "</td>";
+		price = "<td>" + price + "</td>";
+
+		return "<tr>" + dropdown + name + price + "</tr>";
+	}
+</script>
+
+<form>
+	<table border="0", cellpadding="6">
+		<tr><th>Quantity</th>	<th>Item Name</th>	<th>Price</th></tr>
+		<script>
+			menuItems.forEach(element => {
+				document.write(makeRow(element))
+			});
+		</script>	
+	</table>
+	<input type = "submit" value = "Submit Order" />
+</form>
+
+<script>
+	quants = document.querySelectorAll("select");
+	form = document.querySelector("form");
+
+	form.onsubmit = function() {
+		empty = true
+		quants.forEach(element => {
+			if (element.value != 0){
+				empty = false
+			}
+		});
+		if (empty){
+			alert("Order at least one item")
+			return false;
+		}
+
+		w = window.open();
+		write_totals(w);
+	}
+
+	function write_totals(w) {
+		subtotal = 0;
+		quants.forEach((e,i)=>{
+			cost = parseFloat(e.value) * menuItems[i].cost
+
+			s = menuItems[i].name + ":<br />$" + cost.toFixed(2) + "<br />"
+			w.document.write(s)
+			subtotal += cost;
+			console.log(e,i)
+
+		})
+
+		if (subtotal>20)
+		{
+			discounted = 0.1 * subtotal;
+			subtotal = subtotal - discounted;
+		}
+		else
+		{
+			discounted = 0;
+		}
+
+		tax = 0.0625 * subtotal;
+		total = subtotal + tax;
+
+		s = "Subtotal:<br />$" + subtotal.toFixed(2) + "<br />";
+		s += "Tax:<br />$" + tax.toFixed(2) + "<br />";
+		s += "Total:<br />$" + total.toFixed(2) + "<br />";
+
+
+		w.document.write(s);
+	}
+</script>
+
+</body>
+</html>
