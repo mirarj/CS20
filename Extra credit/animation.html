@@ -4,16 +4,18 @@
         <title>Jump</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <style>
+            #imgbox {min-width: 800px; min-height: 450px;}
         </style>
-        <script
-            src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-            integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+        <script src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
             crossorigin="anonymous">
         </script>
     </head>
 
     <body>
+        <div id="imgbox">
         <img src="images/photo1.jpg" id="image">
+        </div>
         <br />
         <input type="button" value="START" id="startbtn">
         <input type="button" value="STOP" id="stopbtn">
@@ -23,37 +25,22 @@
 
             $( document ).ready(function() {
                 curr_i = 0
-                $("startbtn").click(showImg(curr_i))
-                // $("stopbtn").click(next(curr_i-1))
-                // 	$("#startSlides").click(slideShow);
-                // 	$("#stopSlides").click(function()
-                // 		{
-                // 			$("#slide img").stop().fadeIn();
-                // 		}
-                // 	);
-                // })
-                // function slideShow()
-                // {
-                // 	$("#slide img").fadeOut(2000,nextSlide);
-                // }
-                // function nextSlide()
-                // {
-                // 	petIndex++;
-                // 	petIndex= petIndex== pets.length?0: petIndex;
-                // 	$("#slide img").attr("src", "images/"+pets[petIndex]);
-                // 	$("#slide img").fadeIn(2000,slideShow);
-                // }
-
-                function showImg(i){
-
-                    img_src = "photo" + (i+1) + ".jpg" 
+                $("#startbtn").click(hideImg)                    
+                
+                $("#stopbtn").click(function () {
+                    $("#image").stop(clearQueue=true);
+                    $("#image").fadeIn(200);                    
+                })
+                
+                function showImg(){
+                    curr_i = (curr_i+1)%5;
+                    img_src = "./images/photo" + (curr_i+1) + ".jpg" 
                     $("#image").attr("src", img_src)
-                    $("#image").fadeIn(function(){
-
-                    })
+                    $("#image").fadeIn(2000, hideImg)
                 }
-
-
+                function hideImg(){
+                    $("#image").fadeOut(2000, showImg)
+                }
             });
         </script>
     
