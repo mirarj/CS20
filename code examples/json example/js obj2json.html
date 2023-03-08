@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Obj to JSON</title>
+	<style type="text/css">
+		body,html{font-size: 40px;}
+	
+	</style>
+<script language="javascript">
+function Person(first,last)
+	{
+		this.fname= first;
+		this.lname= last;
+		this.show = function()
+		{return this.fname+" "+ this.lname;}
+	}
+</script>
+</head>
+
+<body>
+	<script language="javascript">
+	j = new Person("Sam","Snead");
+	document.write (j.show()+ "<br>");	
+	s = JSON.stringify(j);
+	document.write (s + "<br>");
+	jobj = JSON.parse(s);
+	document.write(jobj);//*****
+	document.write (jobj["fname"]+ "<br/>")
+	ppl = new Array(
+	new Person("Pat","Thecat"),
+	new Person("Jean", "McPete")
+	)
+	document.write ("full name: "+ppl[0].show()
+						+ "<br/>")	
+	s = JSON.stringify(ppl);
+	document.write (s + "<br>");
+	jobj = JSON.parse(s);
+	document.write (jobj[0]["fname"]+ "<br/>")
+//	document.write ("full name: "+jobj[0].show()
+//				     + "<br/>")	
+/**/
+	</script>
+</body>
+</html>

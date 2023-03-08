@@ -1,0 +1,44 @@
+[
+	{
+	"name": "Fido1",
+	"type": "cat",
+	"breed": "Maine Coon",
+	"age": 4,
+	"gender": "female",
+	"procedures": ["checkup","rabies","spayed"],
+	"adopting_family": {
+		"name": "smith",
+		"town": "Cambridge",
+		"children" : 1,
+		"other_pets": false
+	}
+},
+{
+	"name": "Fido2",
+	"type": "dog",
+	"breed": "Maine Coon",
+	"age": 5,
+	"gender": "female",
+	"procedures": ["checkup","rabies","spayed"],
+	"adopting_family": {
+		"name": "smith",
+		"town": "Cambridge",
+		"children" : 1,
+		"other_pets": false
+	}
+},
+{
+	"name": "Fido3",
+	"type": "cat",
+	"breed": "Maine Coon",
+	"age": 6,
+	"gender": "female",
+	"procedures": ["checkup","rabies","spayed"],
+	"adopting_family": {
+		"name": "smith",
+		"town": "Cambridge",
+		"children" : 1,
+		"other_pets": false
+	}
+}
+	]

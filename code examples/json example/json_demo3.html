@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Read JSON Demo</title>
+	<style type="text/css">
+		body,html{font-size: 40px;}
+	
+	</style>
+</head>
+
+<body>
+	<script language="javascript">
+	function Student(first, last, course, grades)
+	{
+	   this.first_name = first;
+	   this.last_name = last;
+	   this.course = course;
+   	   sum = 0;
+	   grades.forEach(function (g) 
+		{ 
+		   sum += g;
+		});
+	   this.grade = sum/grades.length;
+	   this.grade = this.grade.toFixed(1);
+	   this.name = this.first_name + " " + this.last_name;
+	//   this.name = function() 
+	//   {return this.first_name + " " + this.last_name}
+	}
+
+	bill = new Student("bill", "bailey", "comp20", [77,89,99]);
+	document.write (bill["first_name"] + "<br />");
+	document.write (bill.first_name + "<br />");
+	s = JSON.stringify(bill);
+	document.write (s + "<br/>");
+	j = JSON.parse(s);
+	document.write(j["first_name"]+ "<br/>");
+	document.write(j.first_name);
+</script>
+</body>
+</html>

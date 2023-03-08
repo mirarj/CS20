@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JSON Pet Object</title>
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	<!--script language="javascript" src="animals.json"></script-->
+	
+
+</head>
+
+<body>
+	<script language="javascript">
+	$.get( "http://www.secretcheese.com/comp20/demo/animals.json", 
+		  function( data ) {
+			str = JSON.stringify(data);
+			document.write(str +"<br/>");
+		strHTML= "<ul>";
+		data.forEach(function(animal) { 
+		strHTML += "<li>" 
+			    + animal.name + " : " 
+				+ animal.type + "</li>";
+			}) 
+	strHTML += "</ul>";
+	document.write (strHTML);  /**/
+	})
+</script>
+</body>
+</html>

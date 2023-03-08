@@ -1,0 +1,94 @@
+{
+"songs": [
+    {
+        "title" : "Umbrella",
+        "artists" : ["Rihanna", "Jay-Z"],
+        "genres" : ["Pop", "Hip-Hop"],
+        "year" : 2007
+    },
+    {
+        "title" : "Attention",
+        "artists" : ["Charlie Puth"],
+        "genres" : ["Pop"],
+        "year" : 2017
+    },
+    {
+        "title" : "One Call Away",
+        "artists" : ["Charlie Puth"],
+        "genres" : ["Pop"],
+        "year" : 2015
+    },
+    {
+        "title" : "Uptown Funk",
+        "artists" : ["Bruno Mars", "Mark Ronson"],
+        "genres" : ["Pop"],
+        "year" : 2014
+    },
+    {
+        "title" : "Symphony",
+        "artists" : ["Clean Bandit", "Zara Larsson"],
+        "genres" : ["Pop"],
+        "year" : 2017
+    },
+    {
+        "title" : "Hey Soul Sister",
+        "artists" : ["Train"],
+        "genres" : ["Pop"],
+        "year" : 2009
+    },
+    {
+        "title" : "Bohemian Rhapsody",
+        "artists" : ["Queen"],
+        "genres" : ["Rock"],
+        "year" : 1975
+    },
+    {
+        "title" : "Hips Don't Lie",
+        "artists" : ["Shakira", "Wyclef Jean"],
+        "genres" : ["Pop", "Latin"],
+        "year" : 2006
+    },
+    {
+        "title" : "Defying Gravity",
+        "artists" : ["Kristin Chenoweth", "Idina Menzel"],
+        "genres" : ["Broadway"],
+        "year" : 2003
+    },
+    {
+        "title" : "Chammak Challo",
+        "artists" : ["Akon", "Hamsika Ayer"],
+        "genres" : ["Bollywood"],
+        "year" : 2011
+    },
+    {
+        "title" : "HIP",
+        "artists" : ["MAMAMOO"],
+        "genres" : ["K-pop"],
+        "year" : 2019
+    },
+    {
+        "title" : "Umbrella",
+        "artists" : ["Rihanna", "Jay-Z"],
+        "genres" : ["Pop", "Hip-Hop"],
+        "year" : 2007
+    },
+    {
+        "title" : "Umbrella",
+        "artists" : ["Rihanna", "Jay-Z"],
+        "genres" : ["Pop", "Hip-Hop"],
+        "year" : 2007
+    },
+    {
+        "title" : "Umbrella",
+        "artists" : ["Rihanna", "Jay-Z"],
+        "genres" : ["Pop", "Hip-Hop"],
+        "year" : 2007
+    },
+    {
+        "title" : "Umbrella",
+        "artists" : ["Rihanna", "Jay-Z"],
+        "genres" : ["Pop", "Hip-Hop"],
+        "year" : 2007
+    }                
+    ]
+}

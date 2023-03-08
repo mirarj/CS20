@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Read JSON Demo</title>
+</head>
+
+<body>
+	<script language="javascript">
+	phil = {
+		'first_name' : 'Philip',
+		'last_name'  : 'Harmonic',
+		'course'	 : 'Web Programming',
+		'grade'		 :  92,
+} 	// end student
+
+	document.write (phil["first_name"] + "<br>");
+ 	strStudent  = JSON.stringify(phil);
+	document.write (strStudent +  "<br>")
+  	jsonStudent = JSON.parse(strStudent);
+	document.write (jsonStudent["last_name"] + "<br>");
+	student1 = '{"name":"Sue","profession":"teacher"}';
+	document.write (student1 + '<br>');
+	student1Obj = JSON.parse(student1);
+	document.write (student1Obj['name']+ '<br>');
+	</script>
+</body>
+</html>
