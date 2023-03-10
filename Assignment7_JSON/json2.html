@@ -3,28 +3,99 @@
 <head>
 <meta charset="utf-8">
 <title>Read JSON Demo</title>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <table>
+        <tr><th>Title (Year)</th><th>Artists</th><th>Genres</th></tr>
+        
+    </table>
+
 	<script language="javascript">
 
-    // s = "<h1>Songs</h1>"
-    // songs.songs.forEach(song => {
-    //     s += "<h2>" + song.title + " (" + song.year + ")</h2>";
-    //     s += "Artists:<br /><ul>"
-    //         song.artists.forEach(a => {
-    //             s += "<li>" + a + "</li>"
-    //         })
-    //     s += "</ul>"
-    //     s += "Genres:<br /><ul>"
-    //         song.genres.forEach(g => {
-    //             s += "<li>" + g + "</li>"
-    //         })
-    //     s += "</ul>"        
-    // });
-    document.write(JSON.stringify(songs))
-	</script>
+    songs = []
+    $.get("https://mirarj.github.io/CS20/Assignment7_JSON/songs.json", function (data) {
+        songs = data.songs;
 
+        // Part 2
+        part2 = "<h1>Part 2</h1>" + JSON.stringify(songs);
+
+        // Part 3
+        part3 = "<h1>Part 3</h1>";
+        part3 += "<table><tr><th>Title (Year)</th><th>Artists</th><th>Genres</th></tr>";
+        songs.forEach(song => {
+            part3 += "<tr><td>" + song.title + " (" + song.year + ")</td>";
+            part3 += "<td><ul>";
+                song.artists.forEach(a => {
+                    part3 += "<li>" + a + "</li>";
+                })
+                part3 += "</ul></td>";
+                part3 += "<td><ul>";
+                song.genres.forEach(g => {
+                    part3 += "<li>" + g + "</li>";
+                })
+                part3 += "</ul></td>";
+        })
+        part3 += "</table>";
+
+        // Part 4
+        // create html
+        possible_genres = new Set();
+        songs.forEach(song => {
+            song.genres.forEach (genre => {
+
+                possible_genres.add(genre);
+            })        
+        });
+
+        select_html = "<select id='genreselect'>";
+        possible_genres.forEach(g=>{
+            select_html += "<option>" + g + "</option>";
+        })
+        select_html += "</select>";
+
+        button_html = "<input type=button value='Filter' id='filterbutton'></input>";
+        song_list_html = "<div id='songlist'></div>";
+        
+        part4 = "<h1>Part 4</h1>" + select_html + button_html + song_list_html;
+        document.write(part2 + part3 + part4);
+
+        // filter, display songs
+        filter_button = document.getElementById("filterbutton");
+        selected_genre = document.getElementById("genreselect");
+        songdiv = document.getElementById("songlist");
+
+        filter_button.addEventListener('click', function () {
+            songs_html = "<h1>Songs</h1>"
+            songs.forEach(song => {
+                display_song = false;
+                song.genres.forEach(genre => {
+                    if (genre == selected_genre.value) {
+                        display_song = true; 
+                    }
+                })
+                if (display_song) {
+                  songs_html += "<h2>" + song.title + "</h2>";
+                  songs_html +=  song.year + "<br />";
+                  songs_html += "Artists:<br /><ul>";
+                        song.artists.forEach(a => {
+                          songs_html += "<li>" + a + "</li>";
+                        })
+                  songs_html += "</ul>";
+                  songs_html += "Genres:<br /><ul>";
+                    song.genres.forEach(g => {
+                      songs_html += "<li>" + g + "</li>";
+                    })
+                  songs_html += "</ul>";
+                }
+                })
+            songdiv.innerHTML = songs_html;       
+        })
+
+    });
+
+	</script>
 
 </body>
 </html>

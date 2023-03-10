@@ -67,27 +67,27 @@
         "year" : 2019
     },
     {
-        "title" : "Umbrella",
-        "artists" : ["Rihanna", "Jay-Z"],
-        "genres" : ["Pop", "Hip-Hop"],
+        "title" : "(Crank That) Soulja Boy",
+        "artists" : ["Soulja Boy"],
+        "genres" : ["Hip-Hop"],
         "year" : 2007
     },
     {
-        "title" : "Umbrella",
-        "artists" : ["Rihanna", "Jay-Z"],
-        "genres" : ["Pop", "Hip-Hop"],
+        "title" : "Satisfied",
+        "artists" : ["Renée Elise Goldsberry"],
+        "genres" : ["Broadway"],
         "year" : 2007
     },
     {
-        "title" : "Umbrella",
-        "artists" : ["Rihanna", "Jay-Z"],
-        "genres" : ["Pop", "Hip-Hop"],
-        "year" : 2007
+        "title" : "Purple Rain",
+        "artists" : ["Prince"],
+        "genres" : ["Rock", "Soul"],
+        "year" : 1984
     },
     {
-        "title" : "Umbrella",
-        "artists" : ["Rihanna", "Jay-Z"],
-        "genres" : ["Pop", "Hip-Hop"],
+        "title" : "Despacito",
+        "artists" : ["Luis Fonsi", "Daddy Yankee"],
+        "genres" : ["Latin", "Pop"],
         "year" : 2007
     }                
     ]
