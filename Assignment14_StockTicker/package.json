@@ -4,7 +4,7 @@
   "description": "node app ",
   "main": "hello_app.js",
   "scripts": {
-    "start": "node /Assignment14_StockTicker/hello_app.js"
+    "start": "node /Assignment14_StockTicker/part2.js"
   },
   "repository": {
     "type": "git",
