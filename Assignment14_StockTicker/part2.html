@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stock Ticker</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name='viewport' content='width=device-width, initial-scale=1'/>
+        <style>
+        </style>
+    </head>
+
+    <body>
+        <h1>Stock Ticker Lookup</h1>
+        <form method="get" action="./process" name="form1" id="form1">
+            <label for="inputval">Enter a stock symbol or a company name to look up.</label> <br />
+            <input type="text" name="inputval"><br />
+            <input type="radio" name="inputtype" id="1" value="symbol" checked="true">Stock Symbol
+            <input type="radio" name="inputtype" id="2" value="name">Company Name
+            <br/>
+            <input type="submit">
+        </form>    
+    </body>
+</html>
